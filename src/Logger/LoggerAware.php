@@ -18,6 +18,20 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-$app = include_once('bootstrap.php');
+namespace YoutubeDownloader\Logger;
 
-$app->runWithRoute('download');
+/**
+ * Describes a logger-aware instance
+ *
+ * This interface is compatible with PSR-3 Psr\Log\LoggerAwareInterface
+ */
+interface LoggerAware
+{
+	/**
+	 * Sets a logger instance on the object
+	 *
+	 * @param LoggerInterface $logger
+	 * @return null
+	 */
+	public function setLogger(Logger $logger);
+}

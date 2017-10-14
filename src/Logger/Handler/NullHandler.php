@@ -18,6 +18,32 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-$app = include_once('bootstrap.php');
+namespace YoutubeDownloader\Logger\Handler;
 
-$app->runWithRoute('download');
+/**
+ * a handler instance that handles no entries
+ */
+class NullHandler implements Handler
+{
+	/**
+	 * Check if this handler handels a log level
+	 *
+	 * @param string $level A valid log level from LogLevel class
+	 * @return boolean
+	 */
+	public function handles($level)
+	{
+		return false;
+	}
+
+	/**
+	 * Handle an entry
+	 *
+	 * @param Entry $entry
+	 * @return boolean
+	 */
+	public function handle(Entry $entry)
+	{
+		return false;
+	}
+}

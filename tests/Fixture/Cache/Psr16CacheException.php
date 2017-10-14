@@ -18,6 +18,14 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-$app = include_once('bootstrap.php');
+namespace YoutubeDownloader\Cache;
 
-$app->runWithRoute('download');
+use Exception;
+use Psr\SimpleCache\CacheException;
+
+/**
+ * Base interface representing a generic exception in a cache.
+ */
+class Psr16CacheException extends Exception implements CacheException
+{
+}
