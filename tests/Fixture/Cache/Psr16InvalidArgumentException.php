@@ -18,6 +18,13 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-$app = include_once('bootstrap.php');
+namespace YoutubeDownloader\Cache;
 
-$app->runWithRoute('download');
+use Psr\SimpleCache\InvalidArgumentException;
+
+/**
+ * No entry was found in the container.
+ */
+class Psr16InvalidArgumentException extends Psr16CacheException implements InvalidArgumentException
+{
+}
