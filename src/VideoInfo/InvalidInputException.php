@@ -18,6 +18,11 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-$app = include_once('bootstrap.php');
+namespace YoutubeDownloader\VideoInfo;
 
-$app->runWithRoute('download');
+/**
+ * Exception for video Info
+ *
+ * This exception is thrown if there is an error with the input
+ */
+class InvalidInputException extends Exception {}

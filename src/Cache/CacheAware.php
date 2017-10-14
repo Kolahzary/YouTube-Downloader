@@ -18,6 +18,18 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-$app = include_once('bootstrap.php');
+namespace YoutubeDownloader\Cache;
 
-$app->runWithRoute('download');
+/**
+ * Describes a cache-aware instance
+ */
+interface CacheAware
+{
+	/**
+	 * Sets a cache instance on the object
+	 *
+	 * @param Cache $cache
+	 * @return null
+	 */
+	public function setCache(Cache $cache);
+}

@@ -18,6 +18,13 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-$app = include_once('bootstrap.php');
+namespace YoutubeDownloader\Container;
 
-$app->runWithRoute('download');
+use Psr\Container\NotFoundExceptionInterface;
+
+/**
+ * No entry was found in the container.
+ */
+class NotFoundException extends Psr11ContainerException implements NotFoundExceptionInterface
+{
+}

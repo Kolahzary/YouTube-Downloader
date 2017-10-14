@@ -18,6 +18,21 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-$app = include_once('bootstrap.php');
+namespace YoutubeDownloader\Logger;
 
-$app->runWithRoute('download');
+/**
+ * Describes log levels
+ *
+ * This class is compatible with PSR-3 Psr\Log\LogLevel
+ */
+class LogLevel
+{
+	const EMERGENCY = 'emergency';
+	const ALERT     = 'alert';
+	const CRITICAL  = 'critical';
+	const ERROR     = 'error';
+	const WARNING   = 'warning';
+	const NOTICE    = 'notice';
+	const INFO      = 'info';
+	const DEBUG     = 'debug';
+}

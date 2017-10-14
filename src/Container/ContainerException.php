@@ -18,6 +18,13 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-$app = include_once('bootstrap.php');
+namespace YoutubeDownloader\Container;
 
-$app->runWithRoute('download');
+use Exception;
+
+/**
+ * Base interface representing a generic exception in a container.
+ */
+class ContainerException extends Exception
+{
+}
