@@ -18,6 +18,15 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-$app = include_once('bootstrap.php');
+namespace YoutubeDownloader\Tests\Fixture\Http;
 
-$app->runWithRoute('download');
+use YoutubeDownloader\Http\MessageTrait;
+use YoutubeDownloader\Http\Message\Message as MessageInterface;
+
+/**
+ * A simple message instance
+ */
+class Message implements MessageInterface
+{
+	use MessageTrait;
+}
