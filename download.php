@@ -1,46 +1,23 @@
 <?php
 
-include_once('config.php');
-// Check download token
-if (empty($_GET['mime']) OR empty($_GET['token']))
-{
-	exit('Invalid download token 8{');
-}
+/*
+ * PHP script for downloading videos from youtube
+ * Copyright (C) 2012-2017  John Eckman
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, see <http://www.gnu.org/licenses/>.
+ */
 
-// Set operation params
-$mime = filter_var($_GET['mime']);
-$ext  = str_replace(array('/', 'x-'), '', strstr($mime, '/'));
-$url  = base64_decode(filter_var($_GET['token']));
-$name = urldecode($_GET['title']). '.' .$ext; 
+$app = include_once('bootstrap.php');
 
-// Fetch and serve
-if ($url)
-{
-	$size=get_size($url);
-	// Generate the server headers
-	if (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== FALSE)
-	{
-		header('Content-Type: "' . $mime . '"');
-		header('Content-Disposition: attachment; filename="' . $name . '"');
-		header('Expires: 0');
-		header('Content-Length: '.$size);
-		header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-		header("Content-Transfer-Encoding: binary");
-		header('Pragma: public');
-	}
-	else
-	{
-		header('Content-Type: "' . $mime . '"');
-		header('Content-Disposition: attachment; filename="' . $name . '"');
-		header("Content-Transfer-Encoding: binary");
-		header('Expires: 0');
-		header('Content-Length: '.$size);
-		header('Pragma: no-cache');
-	}
-
-	readfile($url);
-	exit;
-}
-
-// Not found
-exit('File not found 8{');
+$app->runWithRoute('download');
