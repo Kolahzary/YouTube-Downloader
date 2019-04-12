@@ -51,18 +51,22 @@
 		<p>Example: http://www.youtube.com/watch?v=<b>Fw-BM-Mqgeg</b></p>
 
     <!-- @TODO: Prepend the base URI -->
-    <?PHP
-    include_once('config.php');
-    function is_chrome(){
-	$agent=$_SERVER['HTTP_USER_AGENT'];
-	if( preg_match("/like\sGecko\)\sChrome\//", $agent) ){	// if user agent is google chrome
-		if(!strstr($agent, 'Iron')) // but not Iron
-			return true;
-	}
-	return false;	// if isn't chrome return false
+    <?php
+    include_once 'config.php';
+    function is_chrome()
+    {
+        $agent = $_SERVER['HTTP_USER_AGENT'];
+        if (preg_match("/like\sGecko\)\sChrome\//", $agent)) {	// if user agent is google chrome
+        if (!strstr($agent, 'Iron')) { // but not Iron
+            return true;
+        }
+        }
+
+        return false;	// if isn't chrome return false
     }
-    if(($config['feature']['browserExtensions']==true)&&(is_chrome()))
-      echo '<a href="ytdl.user.js" class="userscript btn btn-mini" title="Install chrome extension to view a \'Download\' link to this application on Youtube video pages."> Install Chrome Extension </a>';
+    if (($config['feature']['browserExtensions'] == true) && (is_chrome())) {
+        echo '<a href="ytdl.user.js" class="userscript btn btn-mini" title="Install chrome extension to view a \'Download\' link to this application on Youtube video pages."> Install Chrome Extension </a>';
+    }
     ?>
   </form>
 </body>
